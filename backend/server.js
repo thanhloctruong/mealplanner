@@ -23,6 +23,8 @@ app.use(express.static(path.join(__dirname, "/meal-planner/build")));
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "/meal-planner/build/index.html"))
 );
+
+// aaa
 // app.get("/", (req, res) => {
 //   res.send("server is already");
 // });
