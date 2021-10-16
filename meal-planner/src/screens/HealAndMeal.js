@@ -6,7 +6,7 @@ function HealAndMeal(props) {
         <div className="banner">
           <div
             className="banner__img"
-            style={{ backgroundImage: `url(${"/images/product2.jpg"})` }}
+            style={{ backgroundImage: `url(${"/images/Picture6.png"})` }}
           ></div>
           <div className="aa">
             <h2 className="banner__text">Thực Phẩm & Sức Khoẻ</h2>

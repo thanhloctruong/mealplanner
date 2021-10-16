@@ -6,7 +6,7 @@ function HomeScreen(props) {
       <div className="banner">
         <div
           className="banner__img"
-          style={{ backgroundImage: `url(${"/images/product1.jpg"})` }}
+          style={{ backgroundImage: `url(${"/images/Picture4.png"})` }}
         ></div>
         <div className="aa">
           <h2 className="banner__text">Meal Planner Service</h2>
@@ -15,7 +15,7 @@ function HomeScreen(props) {
       <div className="right__content row">
         <div className="col-1 ">
           <img
-            src="/images/product1.jpg"
+            src="/images/aaaaa.jpg"
             alt=""
             className="right__content--img"
           />

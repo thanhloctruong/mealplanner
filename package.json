@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "build": "cd meal-planner && npm install && npm run build",
-    "start": "nodemon node --experimental-modules server.js"
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "author": "",
   "license": "ISC",

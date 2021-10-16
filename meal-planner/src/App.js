@@ -38,16 +38,16 @@ function App() {
                   {userInfo ? (
                     <>
                       <div className="left__image">
-                        <img src="/images/product1.jpg" alt="" />
+                        <img src="/images/avt.jpg" alt="" />
                       </div>
                       <p className="left__name">{userInfo.name}</p>
                     </>
                   ) : (
                     <>
-                      <div className="left__image">
+                      {/* <div className="left__image">
                         <img src="/images/product1.jpg" alt="" />
                       </div>
-                      <p className="left__name">Meal Planner Service </p>
+                      <p className="left__name">Meal Planner Service </p> */}
                     </>
                   )}
                 </div>
@@ -92,7 +92,7 @@ function App() {
                   <li className="left__menuItem">
                     <Link to="/place" className="left__title">
                       <img src="/assets/icon-book.svg" alt="" />
-                      Ăn gì - Ở đâu
+                      Menu
                     </Link>
                   </li>
                   {userInfo ? (

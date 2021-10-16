@@ -7,13 +7,13 @@ function BMICal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const a = weight/((height/10)*2);
+    const a = weight/((height/100)*2);
     setBmi(a);
   };
   return (
     <div className="row">
       <div className="col-1">
-        <img src="/images/BMI.jpg" />
+        <img src="/images/BMI.jpg" alt=""/>
         <h2>Chỉ số BMI là gì?</h2>
         <p>
           Chỉ số BMI (Body Mass Index) hay còn gọi là chỉ số khối cơ thể, chỉ số
@@ -64,7 +64,7 @@ function BMICal(props) {
             <label />
             <button className="btn" type="submit">
               {" "}
-              Cal
+              Tính BMI
             </button>
           </div>
         </form>

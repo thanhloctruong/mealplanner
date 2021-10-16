@@ -1233,10 +1233,10 @@ body {
 }
 .col-1 {
   flex: 1 1 25rem;
-  padding: 1rem;
+  padding: 2rem;
 }
 .col-1 p {
-  padding:1rem 2rem 1rem 0;
+  padding:1rem 2rem 3rem 0;
 }
 
 /* form */
@@ -1280,6 +1280,7 @@ footer {
   grid-area: footer;
   background-color: #1B1B1B;
   color: #fff;
+  padding-top: 1rem;
 }
 .row.center {
   justify-content: center;
