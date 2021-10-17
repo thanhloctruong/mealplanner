@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import path from "path";
 
 import userRouter from "./router/UserRouter.js";
+import uploadRouter from "./router/uploadRouter.js";
+
 
 const app = express();
 app.use(express.json());
@@ -18,6 +20,10 @@ mongoose.connect(
   }
 );
 app.use("/api/users", userRouter);
+app.use("/api/uploads", uploadRouter);
+
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
 
 app.use(express.static(path.join(__dirname, "/meal-planner/build")));
 app.get("*", (req, res) =>

@@ -33,12 +33,19 @@ function App() {
                 <span></span>
               </span>
               <div className="left__content">
-                <div className="left__logo">Meal Planner Service</div>
+                <div className="left__logo">
+                  <Link to="/">Meal Planner Service</Link>
+                </div>
                 <div className="left__profile">
                   {userInfo ? (
                     <>
                       <div className="left__image">
-                        <img src="/images/avt.jpg" alt="" />
+                        {userInfo.image ? (
+                          <img src={userInfo.image} alt="" />
+                        ) : (
+                          <img src="/images/avtt.jpeg" alt="" />
+                        )}
+                        {/* <img src="/images/avt.jpg" alt="" /> */}
                       </div>
                       <p className="left__name">{userInfo.name}</p>
                     </>

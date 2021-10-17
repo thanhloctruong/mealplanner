@@ -34,6 +34,7 @@ userRouter.post(
         res.send({
           _id: user._id,
           name: user.name,
+          image: user.image,
           email: user.email,
           isAdmin: user.isAdmin,
           token: generateToken(user)
@@ -56,6 +57,7 @@ userRouter.post(
     res.send({
       _id: createdUser._id,
       name: createdUser.name,
+      image: '/images/avtt.jpeg',
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser)

@@ -1,28 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { register } from "../actions/userActions";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 
 function Register(props) {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const handleSubmit = e => {
-        e.preventDefault();
-        if(password!== confirmPassword){
-          alert(" Password are not match");
-        } else {
-        //   dispatch(register(name, email, password));
-        console.log('2');
-        }
-      };
-    return (
-        <div>
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const redirect = props.location.search
+    ? props.location.search.split("=")[1]
+    : "/";
+  const userRegister = useSelector(state => state.userRegister);
+  const { userInfo, loading, error } = userRegister;
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if(password!== confirmPassword){
+      alert(" Password are not match");
+    } else {
+      dispatch(register(name, email, password));
+    }
+  };
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push(redirect);
+    }
+  }, [userInfo, props.history, redirect]);
+  return (
+    <div>
       <form className="form" onSubmit={handleSubmit}>
         <div>
           <h1> Register</h1>
         </div>
-        {/* {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant="danger">{error}</MessageBox>} */}
+        {loading && <LoadingBox></LoadingBox>}
+        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
           <label htmlFor="name"> Name</label>
           <input
@@ -30,7 +46,7 @@ function Register(props) {
             id="name"
             placeholder=" enter ur name"
             required
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
         <div>
@@ -40,7 +56,7 @@ function Register(props) {
             id="email"
             placeholder=" enter ur email"
             required
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           ></input>
         </div>
         <div>
@@ -50,7 +66,7 @@ function Register(props) {
             id="password"
             placeholder="inter ur password"
             required
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div>
@@ -60,7 +76,7 @@ function Register(props) {
             id="confirmpassword"
             placeholder="confirmpassword"
             required
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
         </div>
         <div>
@@ -73,14 +89,13 @@ function Register(props) {
         <div>
           <label />
           <div>
-            already have an account? 
+            already have an account?
             <Link to={`props.history.push(redirect)}`}>Sign In </Link>
-            {/* <Link to='/'>Sign In </Link> */}
           </div>
         </div>
       </form>
     </div>
-    );
+  );
 }
 
 export default Register;

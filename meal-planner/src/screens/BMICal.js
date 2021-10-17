@@ -7,8 +7,9 @@ function BMICal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const a = weight/((height/100)*2);
-    setBmi(a);
+    const a = weight/((height/100)*(height/100));
+    const i = a.toFixed(3);
+    setBmi(i);
   };
   return (
     <div className="row">
@@ -40,7 +41,7 @@ function BMICal(props) {
       <div className="col-1">
         <form onSubmit={handleSubmit} className="form">
         <div>
-          <label htmlFor="Weight"></label>
+          <label htmlFor="Weight">Weight</label>
           <input
             type="number"
             id="weight"
@@ -50,7 +51,7 @@ function BMICal(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="Height"></label>
+          <label htmlFor="Height">Height</label>
           <input
             type="text"
             id="height"
