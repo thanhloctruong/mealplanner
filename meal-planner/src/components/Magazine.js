@@ -3,7 +3,7 @@ import React from 'react';
 function Magazine(props) {
 
     return (
-        <div className="col-1 ">
+        <div className="col-1">
             
             <img
               src={props.src}

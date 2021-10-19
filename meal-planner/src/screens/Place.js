@@ -223,15 +223,11 @@ function Place(props) {
       src: "/images/products/55.jpg",
       name: "Sinh tố bơ chuối"
     }
-  ]
+  ];
 
-  const products = data.map((product) =>
-    <Magazine
-      src={product.src}
-      title={product.name}
-      text=""
-    />
-  );
+  const products = data.map((product) => (
+    <Magazine src={product.src} title={product.name} text="" />
+  ));
 
   return (
     <>
@@ -244,9 +240,7 @@ function Place(props) {
           <h2 className="banner__text">Menu</h2>
         </div>
       </div>
-      <div className="right__content row">
-        {products}
-      </div>
+      <div className="right__content row">{products}</div>
     </>
   );
 }

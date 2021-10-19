@@ -2,18 +2,18 @@ import React, { useState } from "react";
 
 function BMICal(props) {
   const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState('');
+  const [height, setHeight] = useState("");
   const [calBmi, setBmi] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const a = weight/((height/10)*2);
-    setBmi(a);
+    const a = weight / ((height / 100) * (height / 100));
+    setBmi(a.toFixed(2));
   };
   return (
     <div className="row">
       <div className="col-1">
-        <img src="/images/BMI.jpg" />
+        <img src="/images/BMI.jpg" alt="BMI"></img>
         <h2>Chỉ số BMI là gì?</h2>
         <p>
           Chỉ số BMI (Body Mass Index) hay còn gọi là chỉ số khối cơ thể, chỉ số
@@ -39,37 +39,36 @@ function BMICal(props) {
       </div>
       <div className="col-1">
         <form onSubmit={handleSubmit} className="form">
-        <div>
-          <label htmlFor="Weight"></label>
-          <input
-            type="number"
-            id="weight"
-            placeholder="VD: 70"
-            required
-            onChange={(e) => setWeight(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="Height"></label>
-          <input
-            type="text"
-            id="height"
-            placeholder="VD: 170"
-            required
-            onChange={(e) => setHeight(e.target.value)}
-          ></input>
-        </div>
-        <h2>{calBmi}</h2>
-        <div>
+          <div>
+            <label htmlFor="Weight">Weight</label>
+            <input
+              type="number"
+              id="weight"
+              placeholder="VD: 70"
+              required
+              onChange={(e) => setWeight(e.target.value)}
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="Height">Height</label>
+            <input
+              type="text"
+              id="height"
+              placeholder="VD: 170"
+              required
+              onChange={(e) => setHeight(e.target.value)}
+            ></input>
+          </div>
+          <h2>{calBmi}</h2>
+          <div>
             <label />
             <button className="btn" type="submit">
               {" "}
-              Cal
+              Tính BMI
             </button>
           </div>
         </form>
       </div>
-      
     </div>
   );
 }
