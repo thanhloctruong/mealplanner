@@ -1,6 +1,6 @@
 {
   "name": "meal-planner",
-  "proxy": "http://mealplannerservice.herokuapp.com",
+  "proxy": "https://mealplannerservice.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

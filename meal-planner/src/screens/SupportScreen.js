@@ -8,7 +8,7 @@ let allMessages = [];
 let allSelectedUser = {};
 const ENDPOINT =
   window.location.host.indexOf("mealplannerservice.herokuapp.com") >= 0
-    ? "http://mealplannerservice.herokuapp.com"
+    ? "https://mealplannerservice.herokuapp.com"
     : window.location.host;
 
 export default function SupportScreen() {
