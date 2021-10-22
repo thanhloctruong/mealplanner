@@ -21,11 +21,11 @@ function BMICal(props) {
           thể. Chỉ số BMI chuẩn được tính dựa trên chiều cao và cân nặng, áp
           dụng cho nam và nữ trưởng thành. Chỉ số khối cơ thể được tính theo
           công thức:
-        </p>
+       
         <br />
         <h2>BMI = W/ [(H)2]</h2>
         <br />
-        <p>Trong đó:</p>
+       Trong đó:</p>
         <p>BMI đơn vị thường dùng là kg/m2</p>
         <br />
         <p>W là cân nặng (kg)</p>
@@ -35,6 +35,7 @@ function BMICal(props) {
           <span style={{ color: "green" }}>chỉ số BMI bình thường</span> sẽ dao
           động trong khoảng 18,5 - 24,9, con số này cho thấy bạn đang ở mức cân
           nặng lý tưởng.
+          <br />
         </p>
       </div>
       <div className="col-1">

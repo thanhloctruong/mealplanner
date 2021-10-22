@@ -144,9 +144,20 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className="row center">
+      <footer className="">
+      
+        <h2  className="row center">Dịch vụ ăn uống Meal Planner Service</h2>
+      <div>
+          
+          <p>Thời gian: 6:00 - 20:00 </p>
+          <p>Hot line: 0352596397</p>
+          <p>Email: mealplanandoder@gmail.com</p>
+          <p>Website: https://mealplannerservice.herokuapp.com</p>
+      </div>
+          <div className="row center">coppy right ACan @2021</div>
+     
       {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-        <div>coppy right ACan @2021</div>
+        
       </footer>
     </Router>
   );
