@@ -1,6 +1,6 @@
 {
   "name": "meal-planner",
-  "proxy": "https://mealplannerservice.herokuapp.com",
+  "proxy": "http://mealplannerservice.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "socket.io-client": "^4.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

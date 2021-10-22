@@ -5,13 +5,16 @@ import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import HealAndMeal from "./screens/HealAndMeal";
 import Dished from "./screens/Dished";
-import Place from "./screens/Place";
+import Menu from "./screens/Menu";
 import BMICal from "./screens/BMICal";
 import Portion from "./screens/Portion";
 import Signin from "./screens/Signin";
 import Register from "./screens/Register";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "./actions/userActions";
+import AdminRoute from "./components/AdminRoute";
+import ChatBox from "./components/ChatBox";
+import SupportScreen from "./screens/SupportScreen";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -43,11 +46,14 @@ function App() {
                         {userInfo.image ? (
                           <img src={userInfo.image} alt="" />
                         ) : (
-                          <img src="/images/avtt.jpeg" alt="" />
+                          <img src="/images/bg1.jpg" alt="" />
                         )}
                         {/* <img src="/images/avt.jpg" alt="" /> */}
                       </div>
                       <p className="left__name">{userInfo.name}</p>
+                      {userInfo.isAdmin && (
+                        <Link to="/support">Support</Link>
+                      )}
                     </>
                   ) : (
                     <>
@@ -97,7 +103,7 @@ function App() {
                     </Link>
                   </li>
                   <li className="left__menuItem">
-                    <Link to="/place" className="left__title">
+                    <Link to="/menu" className="left__title">
                       <img src="/assets/icon-book.svg" alt="" />
                       Menu
                     </Link>
@@ -129,15 +135,17 @@ function App() {
               <Route path="/dished" component={Dished}></Route>
               <Route path="/bmical" component={BMICal}></Route>
               <Route path="/portion" component={Portion}></Route>
-              <Route path="/place" component={Place}></Route>
+              <Route path="/menu" component={Menu}></Route>
               <Route path="/signin" component={Signin}></Route>
               <Route path="/register" component={Register}></Route>
+              <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
               <Route path="/" component={HomeScreen} exact></Route>
             </div>
           </div>
         </div>
       </div>
       <footer className="row center">
+      {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
         <div>coppy right ACan @2021</div>
       </footer>
     </Router>
