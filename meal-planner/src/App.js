@@ -15,9 +15,13 @@ import { signout } from "./actions/userActions";
 import AdminRoute from "./components/AdminRoute";
 import ChatBox from "./components/ChatBox";
 import SupportScreen from "./screens/SupportScreen";
+import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
   // console.log(userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch();
@@ -51,9 +55,7 @@ function App() {
                         {/* <img src="/images/avt.jpg" alt="" /> */}
                       </div>
                       <p className="left__name">{userInfo.name}</p>
-                      {userInfo.isAdmin && (
-                        <Link to="/support">Support</Link>
-                      )}
+                      {userInfo.isAdmin && <Link to="/support">Support</Link>}
                     </>
                   ) : (
                     <>
@@ -108,6 +110,20 @@ function App() {
                       Menu
                     </Link>
                   </li>
+                  <li className="left__menuItem">
+                    <Link to="/cart">
+                      <span className="cartlogo">
+                        <i className="fas fa-shopping-cart"></i>
+                      </span>
+                      {cartItems.length > 0 ? (
+                        <span className="badge">{cartItems.length} đơn hàng</span>
+                      ):(
+                        <span>Cart</span>
+                      )}
+                       
+                    </Link>
+
+                  </li>
                   {userInfo ? (
                     <li className="left__menuItem">
                       <Link
@@ -133,31 +149,37 @@ function App() {
             <div className="right">
               <Route path="/healandmeal" component={HealAndMeal}></Route>
               <Route path="/dished" component={Dished}></Route>
+              <Route
+                path="/products/:id"
+                component={ProductScreen}
+                exact
+              ></Route>
+              <Route path="/cart/:id?" component={CartScreen}></Route>
               <Route path="/bmical" component={BMICal}></Route>
               <Route path="/portion" component={Portion}></Route>
               <Route path="/menu" component={Menu}></Route>
               <Route path="/signin" component={Signin}></Route>
               <Route path="/register" component={Register}></Route>
-              <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
+              <AdminRoute
+                path="/support"
+                component={SupportScreen}
+              ></AdminRoute>
               <Route path="/" component={HomeScreen} exact></Route>
             </div>
           </div>
         </div>
       </div>
-      <footer className="">
-      
-        <h2  className="row center">Dịch vụ ăn uống Meal Planner Service</h2>
-      <div>
-          
+      <footer>
+        <h2 className="center">Dịch vụ ăn uống Meal Planner Service</h2>
+        <div >
           <p>Thời gian: 6:00 - 20:00 </p>
           <p>Hot line: 0352596397</p>
           <p>Email: mealplanandoder@gmail.com</p>
           <p>Website: https://mealplannerservice.herokuapp.com</p>
-      </div>
-          <div className="row center">coppy right ACan @2021</div>
-     
-      {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-        
+        </div>
+        <div className="center">coppy right ACan @2021</div>
+
+        {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
       </footer>
     </Router>
   );

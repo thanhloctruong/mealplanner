@@ -13,7 +13,7 @@ function Products(props) {
           <h2>{product.name}</h2>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <div className="price">${product.price}</div>
+        <div className="price">{product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</div>
       </div>
     </div>
   );
