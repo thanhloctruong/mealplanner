@@ -6,6 +6,8 @@ function Dished(props) {
   const { product } = props;
   return (
     <div key={product._id} className="col-sm-6 col-lg-4 all pizza">
+              <Link to={`/products/${product._id}`}>
+
       <div className="box">
         <div>
           <div className="img-box">
@@ -21,13 +23,13 @@ function Dished(props) {
                   currency: "VND"
                 })}
               </h6>
-              <a href="">
                 <i className="fas fa-shopping-cart"></i>
-              </a>
             </div>
           </div>
         </div>
       </div>
+      </Link>
+
     </div>
   );
 }

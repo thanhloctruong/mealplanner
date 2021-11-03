@@ -26,51 +26,67 @@ function Signin(props) {
     }
   }, [userInfo, props.history, redirect]);
   return (
-    <div className="col-1">
-      <form className="form" onSubmit={handleSubmit}>
-        <div>
-          <h1> Sign In</h1>
+    <section class="book_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>Sign In</h2>
         </div>
-        {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div>
-          <label htmlFor="email"> Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder=" enter ur email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="inter ur password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label />
-          <button className="btn" type="submit">
-            {" "}
-            Sign In
-          </button>
-        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="map_container ">
+              <div id="googleMap">
+                <img src="./images/Hnm7.jpg" alt='' style={{width:"100%"}}/>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form_container">
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="email"> Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder=" enter ur email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="inter ur password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                  ></input>
+                </div>
 
-        <div>
-          <label />
-          <div>
-            <Link to={`/register?redirect=${redirect}`}>
-              {/* <Link to="/register"> */} Create ur account
-            </Link>
+                <div class="btn_box">
+                  <button
+                    type="submit"
+                    style={{ right: "0", position: "absolute" }}
+                  >
+                    Sign In
+                  </button>
+                </div>
+                <div>
+                  <label />
+                  <div>
+                    <Link to={`/register?redirect=${redirect}`}>
+                      {/* <Link to="/register"> */} Create ur account
+                    </Link>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
 

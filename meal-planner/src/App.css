@@ -34,7 +34,34 @@ h1,
 h2 {
   font-family: "Dancing Script", cursive;
 }
-
+ul {
+  margin: 0;
+  padding: 0;
+}
+/* rating */
+.rating span {
+  color: gold;
+  margin: 0.1rem;
+}
+.rating span:last-child {
+  color: #000;
+}
+.large{
+  width: 100%;
+  border-radius: 2rem;
+}
+.small {
+ width: 15rem;
+ height: 15;
+ margin: 2rem 0;
+}
+ ul{
+  list-style-type: none;
+}
+.price {
+  padding-left: 3rem;
+  font-size: 2rem;
+}
 .heading_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,6 +84,7 @@ h2 {
 
 .heading_container h2 span {
   color: #ffbe33;
+
 }
 
 .heading_container p {
@@ -211,7 +239,7 @@ a:focus {
 }
 
 .user_option a {
-  margin: 0 10px;
+  margin: 0 ;
 }
 
 .user_option .user_link {
@@ -233,7 +261,16 @@ a:focus {
   -ms-flex-align: center;
   align-items: center;
 }
-
+.badge {
+  background-color: #999;
+  color:  #ffbe33;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.3rem;
+  margin-left: -0.8rem;
+  position: relative;
+  top: -0.8rem;
+}
 .user_option .cart_link svg {
   width: 17px;
   height: auto;
@@ -679,8 +716,11 @@ a:focus {
 
 .book_section .heading_container {
   margin-bottom: 25px;
+  align-items: center;
 }
-
+.box-img {
+  width: 10rem;
+}
 .book_section .form_container .form-control {
   width: 100%;
   border: none;

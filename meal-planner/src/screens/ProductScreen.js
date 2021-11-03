@@ -66,41 +66,58 @@ function ProductScreen(props) {
       ) : (
         <div>
           <Link to="/menu">Back to result</Link>
-          <div className="row top">
-            <div className="col-2">
-              <img className="large" src={product.image} alt={product.name} />
-            </div>
-            <div className="col-1">
-              <ul>
-                <li>
-                  <h1>{product.name}</h1>
-                </li>
-                <li>
-                  <Rating
-                    rating={product.rating}
-                    numReviews={product.numReviews}
-                  />
-                </li>
-                <li>Price: {product.price} dong</li>
-                <li>
-                  Description: <p>{product.description}</p>
-                </li>
-              </ul>
-            </div>
-            <div className="col-1">
-              <div className="card card-body">
+          {/* bs */}
+          <section class="book_section layout_padding">
+            <div class="container  ">
+              <div class="row">
+                <div class="col-md-4 ">
+                  <div class="img-box">
+                    <img
+                      className="large"
+                      src={product.image}
+                      alt={product.name}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="detail-box">
+                    <h2>{product.name}</h2>
+                    <ul>
+                      <li>
+                        <Rating
+                          rating={product.rating}
+                          numReviews={product.numReviews}
+                        />
+                      </li>
+                      <li>
+                        Price:{" "}
+                        {product.price.toLocaleString("vi", {
+                          style: "currency",
+                          currency: "VND"
+                        })}
+                      </li>
+                      <li>
+                        Description: <p>{product.description}</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4 box-price">
                 <ul>
                   <li>
                     <div className="row">
                       <div>Price</div>
-                      <div className="price">${product.price}</div>
+                      <div className="price">{product.price.toLocaleString("vi", {
+                          style: "currency",
+                          currency: "VND"
+                        })}</div>
                     </div>
                   </li>
                   <li>
                     <div className="row">
                       <div>Quantity</div>
-                      <div>
-                        <select
+                      <div style={{paddingLeft:"2rem"}}>
+                        <select 
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >
@@ -113,15 +130,21 @@ function ProductScreen(props) {
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <button className="primary block" onClick={handleAddToCart}>
+                  <li >
+                  <div >
+                    <button class="btn btn-secondary" onClick={handleAddToCart} style={{width:"100%", marginTop:"2rem"}}>
                       Add to cart
                     </button>
+
+                  </div>
                   </li>
                 </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+          {/* bs */}
+          
           <div>
             <h2 id="reviews">Reviews</h2>
             {product.reviews.length === 0 && (

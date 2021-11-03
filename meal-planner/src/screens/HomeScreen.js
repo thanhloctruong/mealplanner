@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productAction";
 import LoadingBox from "../components/LoadingBox";
@@ -17,30 +19,26 @@ function HomeScreen(props) {
   return (
     <>
       <section className="slider_section ">
-        
         <div
           id="customCarousel1"
           className="carousel slide"
           data-ride="carousel"
         >
-        <div className="bg-box">
-          <img src="/images/bbb.png" alt="" />
-        </div>
+          <div className="bg-box">
+            <img src="/images/bbb.png" alt="" />
+          </div>
           <div className="carousel-inner">
-          
             <div className="carousel-item active">
               <div className="container ">
-              
                 <div className="row">
-                
                   <div className="col-md-7 col-lg-6 ">
                     <div className="detail-box">
                       <h1>Meal planner service</h1>
                       <p>ACan chưa người yêu!</p>
                       <div className="btn-box">
-                        <a href="" className="btn1">
+                        <Link to="menu" className="btn1">
                           Order Now
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -55,9 +53,9 @@ function HomeScreen(props) {
                       <h1>Meal planner service</h1>
                       <p>Quần đùi xào xả ớt</p>
                       <div className="btn-box">
-                        <a href="" className="btn1">
+                        <Link to="menu" className="btn1">
                           Order Now
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -72,9 +70,9 @@ function HomeScreen(props) {
                       <h1>Meal planner service</h1>
                       <p>cật trâu kho tiêu</p>
                       <div className="btn-box">
-                        <a href="" className="btn1">
+                        <Link to="menu" className="btn1">
                           Order Now
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -126,7 +124,7 @@ function HomeScreen(props) {
                     <h6>
                       <span>15%</span> Off
                     </h6>
-                    <a href="">Order Now</a>
+                    <Link to="menu">Order Now</Link>
                   </div>
                 </div>
               </div>
@@ -172,12 +170,12 @@ function HomeScreen(props) {
             </div>
           </div>
           <div className="btn-box">
-            <a href="">View More</a>
+            <Link to="menu">Order Now</Link>
           </div>
         </div>
       </section>
-      <About/>
-      <Booking/>
+      <About />
+      <Booking />
     </>
   );
 }

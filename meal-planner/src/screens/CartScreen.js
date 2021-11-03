@@ -27,89 +27,101 @@ function CartScreen(props) {
     props.history.push("/signin?redirect=shipping");
   };
   return (
-    <div className="row top">
-      <div className="col-2">
-        <h1>Shopping cart</h1>
-        {cartItems.length === 0 ? (
-          <div>
-            <img
-              src="/images/empty-cart.png"
-              alt="empty-cart"
-              className="empty"
-            ></img>
+    <section class="book_section layout_padding">
+      <div class="container  ">
+        <div class="row">
+          <div class="col-md-8 ">
             <div>
-              <Link to="/">Go Shopping</Link>
-            </div>
-          </div>
-        ) : (
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.product}>
-                <div className="row">
+              {cartItems.length === 0 ? (
+                <div>
+                  <img
+                    src="/images/empty-cart.png"
+                    alt="empty-cart"
+                    className="empty"
+                  />
                   <div>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="small"
-                    ></img>
-                  </div>
-                  <div className="min-30">
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                  </div>
-                  <div>
-                    <select
-                      value={item.qty}
-                      onChange={(e) =>
-                        dispatch(
-                          addToCart(item.product, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>${item.price}</div>
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveCart(item.product)}
-                    >
-                      DELETE
-                    </button>
+                    <Link to="/">Go Shopping</Link>
                   </div>
                 </div>
+              ) : (
+                <ul>
+                {cartItems.map((item) => (
+                  <li key={item.product}>
+                    <div className='row'>
+                      <div className="col-md-6">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="small"
+                        ></img>
+                      </div>
+                      <div className="col-md-6">
+                      <div className="min-30">
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      </div>
+                      <div>
+                        <select
+                          value={item.qty}
+                          onChange={(e) =>
+                            dispatch(
+                              addToCart(item.product, Number(e.target.value))
+                            )
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>${item.price}</div>
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveCart(item.product)}
+                        >
+                          DELETE
+                        </button>
+                      </div>
+                      </div>
+                      
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              )}
+            </div>
+          </div>
+          {/* <div class="col-md-4 ">
+            <div class="detail-box">
+              
+            </div>
+          </div> */}
+          <div class="col-md-4 box-price">
+            <ul>
+              <li>
+                <h2>
+                  Tổng Cộng: ({cartItems.reduce((a, c) => a + c.qty, 0)} items):
+                  ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                </h2>
               </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className="col-1">
-        <div className="card card-body">
-          <ul>
-            <li>
-              <h2>
-                Tổng Cộng: ({cartItems.reduce((a, c) => a + c.qty, 0)} items): $
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-              </h2>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={handleCheckOut}
-                className="btn block"
-                disabled={cartItems.length === 0}
-              >
-                proceed to checkout
-              </button>
-            </li>
-          </ul>
+              <li>
+                <button
+                  type="button"
+                  onClick={handleCheckOut}
+                  className="btn btn-secondary"
+                  disabled={cartItems.length === 0}
+                >
+                  proceed to checkout
+                </button>
+              </li>
+            </ul>
+          </div>
+        
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
