@@ -14,9 +14,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { signout } from "./actions/userActions";
 import AdminRoute from "./components/AdminRoute";
 import ChatBox from "./components/ChatBox";
+import Disheda from "./components/Dished";
 import SupportScreen from "./screens/SupportScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
+import { useEffect } from "react";
+import { listProducts } from "./actions/productAction";
+import Header from "./screens/Header";
+import Review from "./screens/Review";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -28,126 +33,23 @@ function App() {
   const handleSignOut = () => {
     dispatch(signout());
   };
+  // const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
+  useEffect(() => {
+    dispatch(listProducts({}));
+  }, [dispatch]);
   return (
     <Router>
-      <div className="wrapper">
-        <div className="container">
-          <div className="dashboard">
-            <div className="left">
-              <span className="left__icon">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-              <div className="left__content">
-                <div className="left__logo">
-                  <Link to="/">Meal Planner Service</Link>
-                </div>
-                <div className="left__profile">
-                  {userInfo ? (
-                    <>
-                      <div className="left__image">
-                        {userInfo.image ? (
-                          <img src={userInfo.image} alt="" />
-                        ) : (
-                          <img src="/images/bg1.jpg" alt="" />
-                        )}
-                        {/* <img src="/images/avt.jpg" alt="" /> */}
-                      </div>
-                      <p className="left__name">{userInfo.name}</p>
-                      {userInfo.isAdmin && <Link to="/support">Support</Link>}
-                    </>
-                  ) : (
-                    <>
-                      {/* <div className="left__image">
-                        <img src="/images/product1.jpg" alt="" />
-                      </div>
-                      <p className="left__name">Meal Planner Service </p> */}
-                    </>
-                  )}
-                </div>
-                <ul className="left__menu">
-                  <li className="left__menuItem open">
-                    <Link to="/">
-                      <img src="/assets/icon-dashboard.svg" alt="" />
-                      Trang chủ
-                    </Link>
-                  </li>
-                  <li className="left__menuItem">
-                    <Link to="/healandmeal">
-                      <img src="/assets/icon-dashboard.svg" alt="" />
-                      Thực phẩm & sức khỏe
-                    </Link>
-                  </li>
-                  <li className="left__menuItem">
-                    <div className="left__title">
-                      <img src="/assets/icon-edit.svg" alt="" />
-                      Chỉ số BMI & khẩu phần ăn
-                      <img
-                        className="left__iconDown"
-                        src="/assets/arrow-down.svg"
-                        alt=""
-                      />
-                      <div className="left__text">
-                        <Link to="/bmical" className="left__link">
-                          BMI
-                        </Link>
-                        <Link to="/portion" className="left__link">
-                          Khẩu phần ăn
-                        </Link>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="left__menuItem">
-                    <Link to="/dished" className="left__title">
-                      <img src="/assets/icon-users.svg" alt="" />
-                      Món ngon mỗi ngày
-                    </Link>
-                  </li>
-                  <li className="left__menuItem">
-                    <Link to="/menu" className="left__title">
-                      <img src="/assets/icon-book.svg" alt="" />
-                      Menu
-                    </Link>
-                  </li>
-                  <li className="left__menuItem">
-                    <Link to="/cart">
-                      <span className="cartlogo">
-                        <i className="fas fa-shopping-cart"></i>
-                      </span>
-                      {cartItems.length > 0 ? (
-                        <span className="badge">{cartItems.length} đơn hàng</span>
-                      ):(
-                        <span>Cart</span>
-                      )}
-                       
-                    </Link>
+      {/* <!-- header section strats --> */}
+      <div className="hero_area">
+        {/* <div className="bg-box">
+          <img src="/images/bbb.png" alt="" />
+        </div> */}
+        <Header />
 
-                  </li>
-                  {userInfo ? (
-                    <li className="left__menuItem">
-                      <Link
-                        to="/"
-                        className="left__title"
-                        onClick={handleSignOut}
-                      >
-                        <img src="/assets/icon-logout.svg" alt="" />
-                        Đăng Xuất
-                      </Link>
-                    </li>
-                  ) : (
-                    <li className="left__menuItem">
-                      <Link to="/signin" className="left__title">
-                        <img src="/../assets/icon-pencil.svg" alt="" />
-                        Sigin
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            </div>
-            <div className="right">
-              <Route path="/healandmeal" component={HealAndMeal}></Route>
+        <main>
+        <Route path="/healandmeal" component={HealAndMeal}></Route>
               <Route path="/dished" component={Dished}></Route>
               <Route
                 path="/products/:id"
@@ -157,31 +59,94 @@ function App() {
               <Route path="/cart/:id?" component={CartScreen}></Route>
               <Route path="/bmical" component={BMICal}></Route>
               <Route path="/portion" component={Portion}></Route>
-              <Route path="/menu" component={Menu}></Route>
+
               <Route path="/signin" component={Signin}></Route>
               <Route path="/register" component={Register}></Route>
               <AdminRoute
                 path="/support"
                 component={SupportScreen}
               ></AdminRoute>
-              <Route path="/" component={HomeScreen} exact></Route>
+          <Route path="/menu" component={Menu}></Route>
+          <Route path="/" component={HomeScreen} exact></Route>
+        </main>
+      </div>
+      <Review/>
+      <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Contact Us
+            </h4>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                Website: https://mealplannerservice.herokuapp.com
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                Hot line: 0352596397
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                Email: mealplanandoder@gmail.com
+                </span>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <footer>
-        <h2 className="center">Dịch vụ ăn uống Meal Planner Service</h2>
-        <div >
-          <p>Thời gian: 6:00 - 20:00 </p>
-          <p>Hot line: 0352596397</p>
-          <p>Email: mealplanandoder@gmail.com</p>
-          <p>Website: https://mealplannerservice.herokuapp.com</p>
+        <div class="col-md-4 footer-col">
+          <div class="footer_detail">
+            <a href="" class="footer-logo">
+              Meal planner service
+            </a>
+            <p>
+              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            </p>
+            <div class="footer_social">
+              <a href="https://www.facebook.com/ACan.Truong102">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/trương-thành-lộc-3768a9205">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.instagram.com/acandayyy">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              
+            </div>
+          </div>
         </div>
-        <div className="center">coppy right ACan @2021</div>
+        <div class="col-md-4 footer-col">
+          <h4>
+            Opening Hours
+          </h4>
+          <p>
+            Everyday
+          </p>
+          <p>
+          6:00 am - 20:00 pm
+          </p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span>2021</span> All Rights Reserved By
+          <a href="https://www.facebook.com/ACan.Truong102">ACan</a><br/><br/>
+          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+        </p>
+      </div>
+    </div>
+  </footer>
+  </Router>
 
-        {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-      </footer>
-    </Router>
   );
 }
 

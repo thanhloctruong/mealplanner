@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productAction";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import Dished from "../components/Dished";
+
 
 function Place(props) {
   
@@ -16,35 +18,52 @@ function Place(props) {
   // const products = data.map((product) => (
   //   <Magazine src={product.src} title={product.name} text="" />
   // ));
-
+console.log(products);
   return (
-    <>
-      <div className="banner">
-        <div
-          className="banner__img"
-          style={{ backgroundImage: `url(${"/images/danhmuc5.jpg"})` }}
-        ></div>
-        <div className="">
-          <h2 className="banner__text">Menu</h2>
+    <section class="food_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Menu
+        </h2>
+      </div>
+      <ul className="filters_menu">
+        <li className="active" data-filter="*">
+          All
+        </li>
+        <li data-filter=".burger">Burger</li>
+        <li data-filter=".pizza">Pizza</li>
+        <li data-filter=".pasta">Pasta</li>
+        <li data-filter=".fries">Fries</li>
+      </ul>
+
+      <div className="filters-content">
+        <div className="row grid">
+          {loading ? (
+            <LoadingBox></LoadingBox>
+          ) : error ? (
+            <MessageBox variant="danger">{error}</MessageBox>
+          ) : (
+            <>
+              {products.length === 0 && (
+                <MessageBox>No Product Found</MessageBox>
+              )}
+              {products.map((product) => (
+                <Dished key={product._id} product={product} />
+              ))}
+              {/* <Products key={product._id} product={product}></Products> */}
+            </>
+          )}
+          {/* component dished */}
+          {/* add sort */}
+          {/* <Menu/> */}
         </div>
       </div>
-      <div className="right__content row">
-      {loading ? (
-        <LoadingBox></LoadingBox>
-      ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
-      ) : (
-        <>
-          {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-          <div className="row center">
-            {products.map((product) => (
-              <Products key={product._id} product={product}></Products>
-            ))}
-          </div>
-        </>
-      )}
+      <div className="btn-box">
+        <a href="">View More</a>
       </div>
-    </>
+    </div>
+  </section>
   );
 }
 
