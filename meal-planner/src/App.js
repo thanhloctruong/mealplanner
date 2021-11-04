@@ -7,6 +7,7 @@ import HealAndMeal from "./screens/HealAndMeal";
 import Dished from "./screens/Dished";
 import Menu from "./screens/Menu";
 import BMICal from "./screens/BMICal";
+import BMRCal from "./screens/BMRCal";
 import Portion from "./screens/Portion";
 import Signin from "./screens/Signin";
 import Register from "./screens/Register";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/products/:id" component={ProductScreen} exact></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/bmical" component={BMICal}></Route>
+          <Route path="/bmrcal" component={BMRCal}></Route>
           <Route path="/portion" component={Portion}></Route>
 
           <Route path="/signin" component={Signin}></Route>
@@ -87,8 +89,7 @@ function App() {
                 </a>
                 <p>
                   Necessary, making this the first true generator on the
-                  Internet. It uses a dictionary of over 200 Latin words,
-                  combined with
+                  Internet.
                 </p>
                 <div class="footer_social">
                   <a href="https://www.facebook.com/ACan.Truong102">

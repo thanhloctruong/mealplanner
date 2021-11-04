@@ -40,12 +40,12 @@ function Header(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="menu">
+                <Link className="nav-link" to="/menu">
                   Menu
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="about">
+                <Link className="nav-link" to="/about">
                   About
                 </Link>
               </li>
@@ -66,18 +66,18 @@ function Header(props) {
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
                   >
-                    <Link className="dropdown-item" to="bmical">
-                      Tinh BMI
+                    <Link className="dropdown-item" to="/bmical">
+                      Tính BMI
                     </Link>
-                    <a className="dropdown-item" href="#">
-                      CCC
-                    </a>
+                    <Link className="dropdown-item" to="/bmrcal">
+                      Tính BMR
+                    </Link>
                   </div>
                 </div>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="booking">
-                  Book Table
+                <Link className="nav-link" to="/booking">
+                  Booking
                 </Link>
               </li>
               <li className="nav-item">
@@ -85,7 +85,7 @@ function Header(props) {
                   <input
                     type="text"
                     className="search-input"
-                    placeholder="search cc!"
+                    placeholder="Type something!"
                   />
                 </div>
               </li>
@@ -135,7 +135,7 @@ function Header(props) {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <Link className="dropdown-item" to="signin">
+                      <Link className="dropdown-item" to="/signin">
                         signin
                       </Link>
                     </div>
@@ -143,7 +143,7 @@ function Header(props) {
                 )}
               </div>
 
-              <Link className="cart_link" to="cart">
+              <Link className="cart_link" to="/cart">
                 <i className="fas fa-shopping-cart"></i>
               </Link>
               {cartItems.length > 0 && (

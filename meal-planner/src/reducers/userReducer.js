@@ -1,4 +1,4 @@
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNINOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL } from "../constants/userConstant";
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNINOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_SAVE_BMI_VALUE } from "../constants/userConstant";
 
 export const userSigninReducer = (state = {}, action) => {
     switch (action.type) {
@@ -10,6 +10,8 @@ export const userSigninReducer = (state = {}, action) => {
         return { loading: false, error: action.payload };
       case USER_SIGNINOUT:
         return {};
+        case USER_SAVE_BMI_VALUE:
+          return { ...state, BMIValue: action.payload };
       default:
         return state;
     }

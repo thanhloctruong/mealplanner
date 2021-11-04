@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNINOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL } from "../constants/userConstant";
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNINOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_SAVE_BMI_VALUE } from "../constants/userConstant";
 
 
 export const signin = (email, password) => async (dispatch) => {
@@ -17,6 +17,10 @@ export const signin = (email, password) => async (dispatch) => {
             : error.message
       });
     }
+  };
+  export const saveBMIValue = data => dispatch => {
+    dispatch({ type: USER_SAVE_BMI_VALUE, payload: data });
+    localStorage.setItem("BMIValue", JSON.stringify(data));
   };
   export const register = (name, email, password) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });

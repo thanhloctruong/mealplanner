@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveBMIValue } from "../actions/userActions";
 
-function BMICal(props) {
+function BMRCal(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { BMIValue } = userSignin;
   const [weight, setWeight] = useState(BMIValue.weight);
@@ -11,62 +11,62 @@ function BMICal(props) {
   const [act, setAct] = useState(BMIValue.act);
   const [goal, setGoal] = useState(BMIValue.goal);
   const [gender, setGender] = useState(BMIValue.gender);
-  const [calBmi, setBmi] = useState(0);
+  const [calBmr, setBmr] = useState(0);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(goal);
-    const a = weight / ((height / 100) * (height / 100));
-    dispatch(saveBMIValue({ weight, height, age, act, goal, gender, calBmi }));
-    setBmi(a.toFixed(2));
+    // console.log(gender.type);
+    if (gender === "1") {
+      const a = 9.6 * weight + 1.9 * height - 4.7 * age + 66.5;
+      setBmr(a.toFixed(2));
+    } else if (gender === "0") {
+      const a = 13.8 * weight + 6.8 * height - 4.7 * age + 655.1;
+      setBmr(a.toFixed(2));
+    }
+    dispatch(saveBMIValue({ weight, height, age, act, goal, gender }));
   };
   return (
     <section class="book_section layout_padding">
       <div class="container">
         <div class="heading_container">
-          <h2>Chỉ số BMI</h2>
+          <h2>Tỷ lệ trao đổi chất cơ bản (BMR)</h2>
         </div>
         <div class="row">
           <div class="col-md-6">
             <img
-              src="/images/BMI.jpg"
+              src="/images/BMR.jpg"
               alt="BMI"
               style={{ width: "100%" }}
             ></img>
-            <h2>Chỉ số BMI là gì?</h2>
+            <h2>Tỷ lệ trao đổi chất cơ bản (BMR) là gì? - Định nghĩa BMR</h2>
             <p>
-              Chỉ số BMI (Body Mass Index) hay còn gọi là chỉ số khối cơ thể,
-              chỉ số thể trọng, là một công cụ thường được sử dụng để đo lượng
-              mỡ trong cơ thể. Chỉ số BMI chuẩn được tính dựa trên chiều cao và
-              cân nặng, áp dụng cho nam và nữ trưởng thành. Chỉ số khối cơ thể
-              được tính theo công thức:
+              Cơ thể chúng ta đốt cháy calo liên tục trong ngày để duy trì các
+              chức năng sống cơ bản như hô hấp, tuần hoàn và tiêu hóa. BMR
+              (Basal Metabolic Rate – tỉ lệ trao đổi chất cơ bản) là lượng calo
+              tối thiểu cần thiết cho các chức năng này khi nghỉ ngơi. Chỉ số
+              này cũng xác định tốc độ cơ thể có thể đốt cháy calo, do đó sẽ thể
+              hiện được mối liên hệ với khối lượng cơ thể.
               <br />
-              <h2>BMI = W/ [(H)2]</h2>
-              <br />
-              Trong đó:
             </p>
-            <p>BMI đơn vị thường dùng là kg/m2</p>
-            <br />
-            <p>W là cân nặng (kg)</p>
-            <p>H là chiều cao (m)</p>
             <p>
-              Một người có{" "}
-              <span style={{ color: "green" }}>chỉ số BMI bình thường</span> sẽ
-              dao động trong khoảng 18,5 - 24,9, con số này cho thấy bạn đang ở
-              mức cân nặng lý tưởng.
+              Một cách phổ biến để tính tỷ lệ trao đổi chất cơ bản BMR là công
+              thức Harris-Benedict: <br />
+              Nữ: BMR = 655 + (9,6 × trọng lượng tính bằng kg) + (1,8 × chiều
+              cao tính bằng cm) – (4,7 × tuổi tính theo năm)
               <br />
+              Nam: BMR = 66 + (13,7 × trọng lượng tính bằng kg) + (5 × chiều cao
+              tính bằng cm) – (6,8 × tuổi tính theo năm)
             </p>
           </div>
           <div class="col-md-6">
             <div class="form_container">
               <form onSubmit={handleSubmit}>
-                <div
+                <form
                   style={{ display: "flex", justifyContent: "space-between" }}
                   onChange={(e) => {
                     setGender(e.target.value);
                   }}
-                  value={gender}
                 >
                   <label htmlFor="gender"> Gender</label>
                   <div>
@@ -89,7 +89,7 @@ function BMICal(props) {
                       style={{ marginLeft: "1rem" }}
                     />
                   </div>
-                </div>
+                </form>
 
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
@@ -454,14 +454,14 @@ function BMICal(props) {
                   </select>
                 </div>
                 <div>
-                  <h2>{calBmi}</h2>
+                  <h2>{calBmr}</h2>
                 </div>
                 <div class="btn_box">
                   <button
                     type="submit"
                     style={{ right: "0", position: "absolute" }}
                   >
-                    cal BMI
+                    cal BMR
                   </button>
                 </div>
               </form>
@@ -473,4 +473,4 @@ function BMICal(props) {
   );
 }
 
-export default BMICal;
+export default BMRCal;

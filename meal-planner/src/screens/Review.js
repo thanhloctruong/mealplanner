@@ -13,12 +13,10 @@ function Review(props) {
               <div class="box">
                 <div class="detail-box">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam
+                    Damn, why i didn't came here soon, too delicios ^^
                   </p>
                   <h6>Moana Michell</h6>
-                  <p>magna aliqua</p>
+                  <p>rate 5 star </p>
                 </div>
                 <div class="img-box">
                   <img src="images/client1.jpg" alt="" class="box-img" />
@@ -28,9 +26,9 @@ function Review(props) {
             <div class="item col-md-6">
               <div class="box">
                 <div class="detail-box">
-                  <p>ăn món salad của shop xong em bị ỉa chảy luôn ạ!</p>
+                  <p>delicious food, Nutrients and calories are carefully calculated, good idea for diet </p>
                   <h6>ACan</h6>
-                  <p>không ngon!</p>
+                  <p>Nice!</p>
                 </div>
                 <div class="img-box">
                   <img src="images/user1.jpg" alt="" class="box-img" />

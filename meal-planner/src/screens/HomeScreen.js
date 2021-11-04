@@ -80,17 +80,7 @@ function HomeScreen(props) {
               </div>
             </div>
           </div>
-          <div className="container">
-            <ol className="carousel-indicators">
-              <li
-                data-target="#customCarousel1"
-                data-slide-to="0"
-                className="active"
-              ></li>
-              <li data-target="#customCarousel1" data-slide-to="1"></li>
-              <li data-target="#customCarousel1" data-slide-to="2"></li>
-            </ol>
-          </div>
+
         </div>
       </section>
       {/* <!-- end slider section --> */}
@@ -103,12 +93,12 @@ function HomeScreen(props) {
                 {/* component discount */}
                 <div className="box ">
                   <div className="img-box">
-                    <img src="images/o1.jpg" alt="" />
+                    <img src="images/products/30.jpg" alt="" />
                   </div>
                   <div className="detail-box">
-                    <h5>Tasty Thursdays</h5>
+                    <h5>Tasty Tuesday</h5>
                     <h6>
-                      <span>20%</span> Off
+                      <span>5% Discount</span>
                     </h6>
                     <a href="">Order Now</a>
                   </div>
@@ -120,9 +110,9 @@ function HomeScreen(props) {
                     <img src="images/o2.jpg" alt="" />
                   </div>
                   <div className="detail-box">
-                    <h5>Pizza Days</h5>
+                    <h5>5 item or more</h5>
                     <h6>
-                      <span>15%</span> Off
+                      <span>Free shipping</span>
                     </h6>
                     <Link to="menu">Order Now</Link>
                   </div>
@@ -132,48 +122,58 @@ function HomeScreen(props) {
           </div>
         </div>
       </section>
-      <section className="food_section layout_padding-bottom">
-        <div className="container">
-          <div className="heading_container heading_center">
-            <h2>Our Menu</h2>
+      <section class="book_section layout_padding">
+        <div class="container">
+          <div class="heading_container">
+            <h2>THỰC PHẨM & SỨC KHỎE</h2>
           </div>
-          <ul className="filters_menu">
-            <li className="active" data-filter="*">
-              All
-            </li>
-            <li data-filter=".burger">Burger</li>
-            <li data-filter=".pizza">Pizza</li>
-            <li data-filter=".pasta">Pasta</li>
-            <li data-filter=".fries">Fries</li>
-          </ul>
-
-          <div className="filters-content">
-            <div className="row grid">
-              {loading ? (
-                <LoadingBox></LoadingBox>
-              ) : error ? (
-                <MessageBox variant="danger">{error}</MessageBox>
-              ) : (
-                <>
-                  {products.length === 0 && (
-                    <MessageBox>No Product Found</MessageBox>
-                  )}
-                  {products.map((product) => (
-                    <Dished key={product._id} product={product} />
-                  ))}
-                  {/* <Products key={product._id} product={product}></Products> */}
-                </>
-              )}
-              {/* component dished */}
-              {/* add sort */}
-              {/* <Menu/> */}
+          <div class="row">
+            <div class="col-md-6" style={{ border: "1px solid #c0c0c0" }}>
+              <div class="form_container">
+                <a href="https://vfa.gov.vn/thuc-pham-va-suc-khoe/dinh-duong-nang-cao-suc-de-khang-trong-mua-dich-covid-19-ncov.html">
+                  <img
+                    src="./images/123.jpg"
+                    alt=""
+                    style={{ width: "100%", maxHeight: "30rem" }}
+                  />
+                  <h2>
+                    Dinh dưỡng nâng cao sức đề kháng trong “mùa” dịch Covid-19
+                    (nCoV)
+                  </h2>
+                  <p style={{ color: "#000" }}>
+                    Vi rút corona chủng mới gây viêm đường hô hấp cấp (tên chính
+                    thức là Covid-19 (nCoV) đang hoành hành, khiến người mắc
+                    bệnh có các biểu hiện như ho, sốt và khó thở, suy yếu nội
+                    tạng...
+                  </p>
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="btn-box">
-            <Link to="menu">Order Now</Link>
+            <div class="col-md-6" style={{ border: "1px solid #c0c0c0" }}>
+            <div class="form_container">
+                <a href="https://vfa.gov.vn/thuc-pham-va-suc-khoe/dinh-duong-nang-cao-suc-de-khang-trong-mua-dich-covid-19-ncov.html">
+                  <img
+                    src="./images/123.jpg"
+                    alt=""
+                    style={{ width: "100%", maxHeight: "30rem" }}
+                  />
+                  <h2>
+                    Dinh dưỡng nâng cao sức đề kháng trong “mùa” dịch Covid-19
+                    (nCoV)
+                  </h2>
+                  <p style={{ color: "#000" }}>
+                    Vi rút corona chủng mới gây viêm đường hô hấp cấp (tên chính
+                    thức là Covid-19 (nCoV) đang hoành hành, khiến người mắc
+                    bệnh có các biểu hiện như ho, sốt và khó thở, suy yếu nội
+                    tạng...
+                  </p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
       <About />
       <Booking />
     </>
