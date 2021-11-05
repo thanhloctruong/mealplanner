@@ -15,7 +15,10 @@ import { useSelector } from "react-redux";
 import AdminRoute from "./components/AdminRoute";
 import ChatBox from "./components/ChatBox";
 import SupportScreen from "./screens/SupportScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+
 import ProductScreen from "./screens/ProductScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import CartScreen from "./screens/CartScreen";
 import Header from "./screens/Header";
 import Review from "./screens/Review";
@@ -46,6 +49,8 @@ function App() {
           <Route path="/bmical" component={BMICal}></Route>
           <Route path="/bmrcal" component={BMRCal}></Route>
           <Route path="/portion" component={Portion}></Route>
+          <Route path="/shipping" component={ShippingAddressScreen}></Route>
+          <Route path="/payment" component={PaymentScreen}></Route>
 
           <Route path="/signin" component={Signin}></Route>
           <Route path="/register" component={Register}></Route>
@@ -56,6 +61,7 @@ function App() {
       </div>
       <Review />
       <footer class="footer_section">
+      {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
         <div class="container">
           <div class="row">
             <div class="col-md-4 footer-col">
@@ -88,8 +94,7 @@ function App() {
                   Meal planner service
                 </a>
                 <p>
-                  Necessary, making this the first true generator on the
-                  Internet.
+                Choose the Quality of Food
                 </p>
                 <div class="footer_social">
                   <a href="https://www.facebook.com/ACan.Truong102">
@@ -116,7 +121,7 @@ function App() {
               &copy; <span>2021</span> All Rights Reserved By
               <a href="https://www.facebook.com/ACan.Truong102"> ACan </a>
               <br />
-              {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+              
             </p>
           </div>
         </div>

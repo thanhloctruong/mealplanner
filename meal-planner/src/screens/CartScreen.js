@@ -49,16 +49,17 @@ function CartScreen(props) {
                   <li key={item.product}>
                     <div className='row'>
                       <div className="col-md-6">
+                      <div className="min-30">
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      </div>
                         <img
                           src={item.image}
                           alt={item.name}
                           className="small"
                         ></img>
                       </div>
-                      <div className="col-md-6">
-                      <div className="min-30">
-                        <Link to={`/product/${item.product}`}>{item.name}</Link>
-                      </div>
+                      <div className="col-md-6 row" style={{justifyContent:"space-around"}}>
+                      
                       <div>
                         <select
                           value={item.qty}
@@ -76,9 +77,10 @@ function CartScreen(props) {
                         </select>
                       </div>
                       <div>${item.price}</div>
-                      <div>
+                      <div >
                         <button
-                          type="button"
+                        className="btn btn-secondary"
+                          type="submit"
                           onClick={() => handleRemoveCart(item.product)}
                         >
                           DELETE

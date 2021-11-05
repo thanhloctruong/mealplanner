@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { signin } from "../actions/userActions";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
 
 function Signin(props) {
   const [email, setEmail] = useState("");
@@ -12,7 +10,7 @@ function Signin(props) {
     ? props.location.search.split("=")[1]
     : "/";
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  const { userInfo} = userSignin;
 
   const dispatch = useDispatch();
 
@@ -26,28 +24,28 @@ function Signin(props) {
     }
   }, [userInfo, props.history, redirect]);
   return (
-    <section class="book_section layout_padding">
-      <div class="container">
-        <div class="heading_container">
+    <section className="book_section layout_padding">
+      <div className="container">
+        <div className="heading_container">
           <h2>Sign In</h2>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="map_container ">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="map_container ">
               <div id="googleMap">
-                <img src="./images/Hnm7.jpg" alt='' style={{width:"100%"}}/>
+                <img src="images/Hnm7.jpg" alt='' style={{width:"100%"}}/>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form_container">
+          <div className="col-md-6">
+            <div className="form_container">
               <form onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="email"> Email</label>
                   <input
                     type="email"
                     id="email"
-                    class="form-control"
+                    className="form-control"
                     placeholder=" enter ur email"
                     required
                     onChange={(e) => setEmail(e.target.value)}
@@ -58,14 +56,14 @@ function Signin(props) {
                   <input
                     type="password"
                     id="password"
-                    class="form-control"
+                    className="form-control"
                     placeholder="inter ur password"
                     required
                     onChange={(e) => setPassword(e.target.value)}
                   ></input>
                 </div>
 
-                <div class="btn_box">
+                <div className="btn_box">
                   <button
                     type="submit"
                     style={{ right: "0", position: "absolute" }}

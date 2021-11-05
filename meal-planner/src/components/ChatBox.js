@@ -70,7 +70,7 @@ export default function ChatBox(props) {
         </button>
       ) : (
         <div className="card card-body">
-          <div className="row">
+          <div className="row" style={{justifyContent:"space-between"}}>
             <strong>Support </strong>
             <button type="button" onClick={closeHandler}>
               <i className="fa fa-close" />

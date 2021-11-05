@@ -34,7 +34,7 @@ function Header(props) {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav  mx-auto ">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home <span className="sr-only">(current)</span>
                 </Link>
@@ -81,7 +81,7 @@ function Header(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <div>
+                <div style={{textAlign:"center"}}>
                   <input
                     type="text"
                     className="search-input"
@@ -90,7 +90,7 @@ function Header(props) {
                 </div>
               </li>
             </ul>
-            <div className="user_option  ">
+            <div className="user_option " style={{justifyContent: "space-around"}}>
               <div className="dropdown user_link">
                 {userInfo ? (
                   <>
